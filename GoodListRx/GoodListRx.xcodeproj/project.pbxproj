@@ -17,6 +17,8 @@
 		517F4653290941FA00BD9DF1 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 517F4652290941FA00BD9DF1 /* RxRelay */; };
 		517F4655290941FA00BD9DF1 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 517F4654290941FA00BD9DF1 /* RxSwift */; };
 		517F46582909426F00BD9DF1 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F46572909426F00BD9DF1 /* TaskListViewController.swift */; };
+		517F465A290950BF00BD9DF1 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F4659290950BF00BD9DF1 /* AddTaskViewController.swift */; };
+		517F465D2909572300BD9DF1 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517F465C2909572300BD9DF1 /* Task.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		517F46472909418300BD9DF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		517F46492909418300BD9DF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		517F46572909426F00BD9DF1 /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
+		517F4659290950BF00BD9DF1 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		517F465C2909572300BD9DF1 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 		517F463A2909418100BD9DF1 /* GoodListRx */ = {
 			isa = PBXGroup;
 			children = (
+				517F465B2909571900BD9DF1 /* Models */,
 				517F46562909425C00BD9DF1 /* Controllers */,
 				517F463B2909418100BD9DF1 /* AppDelegate.swift */,
 				517F463D2909418100BD9DF1 /* SceneDelegate.swift */,
@@ -80,8 +85,17 @@
 			isa = PBXGroup;
 			children = (
 				517F46572909426F00BD9DF1 /* TaskListViewController.swift */,
+				517F4659290950BF00BD9DF1 /* AddTaskViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		517F465B2909571900BD9DF1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				517F465C2909572300BD9DF1 /* Task.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +181,8 @@
 				517F46582909426F00BD9DF1 /* TaskListViewController.swift in Sources */,
 				517F463C2909418100BD9DF1 /* AppDelegate.swift in Sources */,
 				517F463E2909418100BD9DF1 /* SceneDelegate.swift in Sources */,
+				517F465D2909572300BD9DF1 /* Task.swift in Sources */,
+				517F465A290950BF00BD9DF1 /* AddTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
