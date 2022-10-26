@@ -15,6 +15,7 @@ class TaskListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     private var tasks = BehaviorRelay<[Task]>(value: [])
+    private var filteredTasks = [Task]()
 
     let disposeBag = DisposeBag()
 
@@ -28,28 +29,37 @@ class TaskListViewController: UIViewController {
               let addTVC = navC.viewControllers.first as? AddTaskViewController else {
             fatalError("Controller not found")
         }
-        addTVC.taskSubjectObservable.subscribe(onNext: { task in
-
+        addTVC.taskSubjectObservable.subscribe(onNext: { [unowned self] task in
 
             let priority = Priority(rawValue: self.prioritySegmenterdControl.selectedSegmentIndex - 1)
 
             var existingTasks = self.tasks.value
             existingTasks.append(task)
             self.tasks.accept(existingTasks)
-            print(task)
+
+            self.filterTask(by: priority)
         }).disposed(by: disposeBag)
+    }
+
+    @IBAction func priorityValueChanged(segmentedControl: UISegmentedControl) {
+        let priority = Priority(rawValue: segmentedControl.selectedSegmentIndex - 1)
+        filterTask(by: priority)
+    }
+
+    private func filterTask(by priority: Priority?) {
+        if priority == nil {
+            self.filteredTasks = self.tasks.value
+        } else {
+            self.tasks.map { tasks in
+                return tasks.filter { $0.priority == priority! }}.subscribe(onNext: { [weak self] task in self?.filteredTasks = task }).disposed(by: disposeBag)
+        }
     }
 }
 
 extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
 
-    func numberOfSections(in tableView: UITableView) -> Int {
-        1
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
-    }
+    func numberOfSections(in tableView: UITableView) -> Int { 1 }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { 10 }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath)
